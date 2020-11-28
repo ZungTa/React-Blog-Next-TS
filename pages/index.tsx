@@ -1,5 +1,9 @@
 import Head from 'next/head'
+import { useEffect } from 'react'
 import styles from '../styles/Home.module.scss'
+import Button from '@components/common/Button';
+import Header from '@components/common/Header'
+import Footer from '@components/common/Footer'
 
 export default function Home() {
   return (
@@ -8,6 +12,7 @@ export default function Home() {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header></Header>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
@@ -48,9 +53,14 @@ export default function Home() {
             </p>
           </a>
         </div>
+        <div>
+          {/* <Button to="/" onClick={() => { console.log('hello~') }}>haai</Button> */}
+          <Button onClick={() => { console.log('hello~') }}>haai</Button>
+        </div>
       </main>
+      <Footer onLoginClick={() => { console.log('onLoginClick') }} logged={false}></Footer>
 
-      <footer className={styles.footer}>
+      {/* <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
@@ -59,7 +69,7 @@ export default function Home() {
           Powered by{' '}
           <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         </a>
-      </footer>
+      </footer> */}
     </div>
   )
 }
