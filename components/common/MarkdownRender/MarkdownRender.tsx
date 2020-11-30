@@ -105,7 +105,7 @@ class MarkdownRender extends Component<MarkdownRenderProps> {
     Prism.highlightAll();
   }
 
-  componentDidUpdate(prevProps: MarkdownRenderProps, prevState: MarkdownRenderState) {
+  componentDidUpdate(prevProps: Readonly<MarkdownRenderProps>, prevState: Readonly<MarkdownRenderState>) {
     // markdown 값이 변경되면 renderMarkdown을 호출한다.
     if (prevProps.markdown !== this.props.markdown) {
       console.log('markdown update');

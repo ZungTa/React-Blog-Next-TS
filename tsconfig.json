@@ -10,6 +10,12 @@
       ],
       "@lib/*": [
         "lib/*"
+      ],
+      "@store/*": [
+        "store/*"
+      ],
+      "@interfaces/*": [
+        "interfaces/*"
       ]
     },
     "allowJs": true,
