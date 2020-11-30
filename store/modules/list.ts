@@ -17,11 +17,14 @@ const initialState = Map({
     lastPage: null
 });
 
+type StateType = typeof initialState;
+
 // reducer
 export default handleActions({
     ...pender({
         type: GET_POST_LIST,
-        onSuccess: (state: Map<string, string | number>, action: { payload: { data: any, headers: any } }) => {
+        // onSuccess: (state: Map<string, string | number>, action: { payload: { data: any, headers: any } }) => {
+        onSuccess: (state: StateType, action: { payload: { data: any, headers: any } }) => {
             const { data: posts } = action.payload;
 
             const lastPage = action.payload.headers['last-page'];

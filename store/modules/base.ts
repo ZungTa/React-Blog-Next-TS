@@ -5,8 +5,6 @@ import { pender } from 'redux-pender';
 
 import * as api from 'lib/api';
 
-import { reducerStateType } from '@interfaces/index';
-
 // action types
 const SHOW_MODAL = 'base/SHOW_MODAL';
 const HIDE_MODAL = 'base/HIDE_MODAL';
@@ -43,6 +41,7 @@ const initialState = Map({
     logged: false, // 현재 로그인 상태
 });
 
+type StateType = typeof initialState;
 
 // reducer
 export default handleActions(
@@ -57,12 +56,12 @@ export default handleActions(
         },
         ...pender({
             type: LOGIN,
-            onSuccess: (state: reducerStateType, dispatch) => {
+            onSuccess: (state: StateType, dispatch) => {
                 // 로그인 성공
                 return state.set('logged', true);
             },
             // TODO: 맞나 이게..
-            onError: (state: reducerStateType, action) => {
+            onError: (state: StateType, action) => {
                 return state
                     .setIn(['loginModal', 'error'], true)
                     .setIn(['loginModal', 'password'], '');

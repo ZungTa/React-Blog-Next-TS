@@ -5,10 +5,7 @@ import { bindActionCreators } from 'redux';
 import * as baseActions from '@store/modules/base';
 
 type BasePropsType = {
-    BaseActions: {
-        tempLogin: () => void;
-        checkLogin: () => void;
-    }
+    BaseActions: typeof baseActions;
 }
 function BaseF(props: BasePropsType) {
     const initialize = async () => {

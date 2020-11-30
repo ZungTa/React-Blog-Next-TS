@@ -1,1 +1,0 @@
-export type reducerStateType = Map<string, boolean>;
