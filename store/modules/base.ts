@@ -41,7 +41,7 @@ const initialState = Map({
     logged: false, // 현재 로그인 상태
 });
 
-type StateType = typeof initialState;
+export type StateType = typeof initialState;
 
 // reducer
 export default handleActions(

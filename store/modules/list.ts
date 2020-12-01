@@ -14,7 +14,7 @@ export const getPostList = createAction(GET_POST_LIST, api.getPostList);
 // initial state
 const initialState = Map({
     posts: List(),
-    lastPage: null
+    lastPage: null as unknown | string,
 });
 
 type StateType = typeof initialState;
@@ -27,10 +27,9 @@ export default handleActions({
         onSuccess: (state: StateType, action: { payload: { data: any, headers: any } }) => {
             const { data: posts } = action.payload;
 
-            const lastPage = action.payload.headers['last-page'];
+            const lastPage = action.payload.headers['last-page'] as string;
             return state.set('posts', fromJS(posts))
                 .set('lastPage', parseInt(lastPage, 10));
         }
     })
-    // TODO: any는 좀..
-}, initialState as any)
+}, initialState)

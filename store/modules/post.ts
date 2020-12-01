@@ -18,14 +18,17 @@ const initialState = Map({
     post: Map({})
 });
 
+export type StateType = typeof initialState;
+
 // reducer
 export default handleActions({
     ...pender({
         type: GET_POST,
         // TODO: 이거 좀 이상..
-        onSuccess: (state: any, action: { payload: { data: string } }) => {
+        onSuccess: (state: any, action): StateType => {
             const { data: post } = action.payload;
             return state.set('post', fromJS(post));
+            // return 1;
         }
     }),
     ...pender({

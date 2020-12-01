@@ -3,13 +3,14 @@ import Footer from 'components/common/Footer';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as baseActions from 'store/modules/base';
+import { StateType } from 'store/modules/base';
+
 
 type FooterContainerPropsType = {
-    BaseActions: {
-        logout: () => void;
-    };
+    BaseActions: typeof baseActions;
     logged: boolean;
-}
+};
+
 function FooterContainerF(props: FooterContainerPropsType) {
     const handleLoginClick = async () => {
         const { BaseActions, logged } = props;
@@ -30,7 +31,7 @@ function FooterContainerF(props: FooterContainerPropsType) {
     return <Footer onLoginClick={handleLoginClick} logged={props.logged} />;
 }
 
-class FooterContainer extends Component {
+class FooterContainer extends Component<FooterContainerPropsType> {
     handleLoginClick = async () => {
         const { BaseActions, logged } = this.props;
         if (logged) {
@@ -55,8 +56,9 @@ class FooterContainer extends Component {
 }
 
 export default connect(
-    state => ({
-        logged: state.base.get('logged'),
+    (state: StateType) => ({
+        // logged: state.base.get('logged'),
+        logged: state.get('logged'),
     }),
     dispatch => ({
         BaseActions: bindActionCreators(baseActions, dispatch),

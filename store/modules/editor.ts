@@ -19,6 +19,7 @@ export const writePost = createAction(WRITE_POST, api.writePost);
 export const getPost = createAction(GET_POST, api.getPost);
 export const editPost = createAction(EDIT_POST, api.editPost);
 
+
 // initial state
 const initialState = Map({
     postId: null,
@@ -27,7 +28,7 @@ const initialState = Map({
     tags: '',
 });
 
-type StateType = typeof initialState;
+export type StateType = typeof initialState;
 // type InitAction = ReturnType<typeof initialize>;
 
 const actions = {
